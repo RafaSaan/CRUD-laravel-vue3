@@ -17,6 +17,10 @@ class ProductController extends Controller
     {
         $products= Product::all();
         return response()->json($products);
+
+        
+        
+
     }
 
     /**
@@ -52,11 +56,23 @@ class ProductController extends Controller
    
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
-        $product->fill($request->post())->save();
+        // $product->fill($request->post())->save();
+
+        // return response()->json([
+        //     'product'=>$product
+        // ]);
+
+        $product= Product::find($id);
+        $product->code = $request->code;
+        $product->product = $request->product;
+        $product->quantity = $request->quantity;
+        $product->price = $request->price;
+        $product->save();
+
         return response()->json([
-            'product'=>$product
+                $product
         ]);
 
     }

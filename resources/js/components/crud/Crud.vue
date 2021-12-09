@@ -22,10 +22,21 @@
                     <td>
                         <button
                             type="submit"
-                            class="btn btn-danger"
+                            class="btn btn-danger me-3"
                             @click="deleteProduct(product.id)"
                         >
-                            eliminar
+                            Eliminar
+                        </button>
+                        <button
+                            @click="
+                                $router.push({
+                                    name: 'edit',
+                                    params: { id: product.id },
+                                })
+                            "
+                            class="btn btn-warning"
+                        >
+                            Editar
                         </button>
                     </td>
                 </tr>
